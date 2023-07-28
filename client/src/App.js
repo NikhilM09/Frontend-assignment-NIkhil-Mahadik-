@@ -9,7 +9,8 @@ import { useContext } from 'react';
 import TableData from './TableData';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import useOnline from './custom_hooks/useOnline';
+import noInternet from './assets/no_internet.gif';
 
 function App() {
 	const [symbol, setSymbol] = useState('');
@@ -31,6 +32,7 @@ function App() {
 		}
 	}, [date, symbol])
 	//disable button status update code end//
+	const isOnline = useOnline();
 
 	//update respective state variable of user inputs code start//
 	const handleSymbolChange = (event) => {
@@ -148,11 +150,15 @@ function App() {
 									*This field cannot be empty
 								</div>}
 							</div>
-							<button type="submit" disabled={!formValid} className="btn btn-sm btn-primary mb-2">Submit</button>
+							<button type="submit" disabled={!formValid || !isOnline} className="btn btn-sm btn-primary mb-2">Submit</button>
 							{!formValid && <span className="text-danger mx-2">**All fields are mandatory</span>}
 						</form>
 						{tableData.stockData.length !== 0 &&
 							<button className="btn btn-sm btn-danger" onClick={() => setTableData({ stockData: [] })}>Clear table data</button>}
+							{!isOnline && 
+							<div className="text-danger">
+								<h3>Seems like low or no internet connection....</h3>
+							</div>}
 					</div>
 					{(tableData?.stockData.length !== 0) &&
 

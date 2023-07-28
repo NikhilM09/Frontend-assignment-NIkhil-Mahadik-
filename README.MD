@@ -6,3 +6,4 @@ Features added
 #Table showing all the requested data from user.
 #Handling of various response codes using toaster messages.
 #used context API to store the data.
+#custom hook to display message if internet breaks.

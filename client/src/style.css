@@ -1,0 +1,4 @@
+.custom_input:focus{
+    background-color:rgba(0,0,255,0.1)!important;
+    box-shadow:none!important;
+}

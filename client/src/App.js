@@ -10,7 +10,6 @@ import TableData from './TableData';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useOnline from './custom_hooks/useOnline';
-import noInternet from './assets/no_internet.gif';
 
 function App() {
 	const [symbol, setSymbol] = useState('');
